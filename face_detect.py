@@ -23,12 +23,19 @@ def getGrayscaleImage(img):
     return gray_image
 
 
+def getCascadeClassifier():
+    haar_cascade = cv2.CascadeClassifier('haar_face.xml')
+    return haar_cascade
+
+
 def main():
     img = getImage()
     showImage(img)
 
     gray_image = getGrayscaleImage(img)
     showImage(gray_image)
+
+    haar_cascade = getCascadeClassifier()
 
     cv2.waitKey(0)
 
