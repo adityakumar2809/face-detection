@@ -37,6 +37,18 @@ def detectFace(cascade_classifier, img):
     return faces_rect
 
 
+def drawRectangleOverFaces(img, faces_rect):
+    for (x, y, w, h) in faces_rect:
+        img = cv2.rectangle(
+            img=img,
+            pt1=(x, y),
+            pt2=(x + w, y + h),
+            color=(0, 255, 0),
+            thickness=2
+        )
+    return img
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -48,6 +60,9 @@ def main():
 
     faces_rect = detectFace(haar_cascade, gray_image)
     print(f'Number of faces found is {len(faces_rect)}')
+
+    face_marked_image = drawRectangleOverFaces(img, faces_rect)
+    showImage(face_marked_image)
 
     cv2.waitKey(0)
 
