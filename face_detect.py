@@ -5,7 +5,7 @@ image_index = 0
 
 
 def getImage():
-    img = cv2.imread('images/image1.jpg')
+    img = cv2.imread('images/image2.jpg')
     return img
 
 
