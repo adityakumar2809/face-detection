@@ -28,6 +28,15 @@ def getCascadeClassifier():
     return haar_cascade
 
 
+def detectFace(cascade_classifier, img):
+    faces_rect = cascade_classifier.detectMultiScale(
+        image=img,
+        scaleFactor=1.1,
+        minNeighbors=3
+    )
+    return faces_rect
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -36,6 +45,9 @@ def main():
     showImage(gray_image)
 
     haar_cascade = getCascadeClassifier()
+
+    faces_rect = detectFace(haar_cascade, gray_image)
+    print(f'Number of faces found is {len(faces_rect)}')
 
     cv2.waitKey(0)
 
